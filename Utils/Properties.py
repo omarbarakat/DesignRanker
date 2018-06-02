@@ -8,7 +8,15 @@ Created on Sun Jul  9 22:06:12 2017
 
 import pickle
 
+
 class Properties:
+    @staticmethod
+    def readFromFile(file):
+        with open(file, 'rb') as pickle_file:
+            content=pickle.load(pickle_file)
+        return content
+    
+    
     cropWidth=None
     cropHeight=None
     
@@ -20,13 +28,3 @@ class Properties:
     def writeToFile(self, file):
         with open(file, 'wb') as output:
             pickle.dump(self, output)
-    
-    @staticmethod
-    def readFromFile(file):
-#        try:
-        with open(file, 'rb') as pickle_file:
-            content=pickle.load(pickle_file)
-        return content
-#        except:
-#            return Properties()
-    

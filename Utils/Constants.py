@@ -8,6 +8,9 @@ Created on Mon Jul 10 22:06:32 2017
 
 class Constants:
     rootDir='/media/omar/Data/Miscellaneous/web analysis/'
+    imagesDir='images/'
     trainDir='images/train/'
     testDir='images/test/'
+    wikiDir='wikis/'
+    htmlDir='htmls/'
     propFileName='prop.pkl'

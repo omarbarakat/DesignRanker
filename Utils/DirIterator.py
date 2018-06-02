@@ -7,7 +7,6 @@ Created on Tue Jul  4 22:44:02 2017
 """
 import os
 import numpy as np
-from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 

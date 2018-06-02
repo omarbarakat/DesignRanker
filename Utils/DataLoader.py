@@ -5,10 +5,11 @@ Created on Tue Jul  4 22:36:07 2017
 
 @author: omar
 """
-from Utils.DirIterator import *
-from Utils.Properties import *
+from Utils.DirIterator import DirIterator
+from Utils.Properties import Properties
 import re
 import numpy as np
+from keras.preprocessing.image import ImageDataGenerator
 
 class DataLoader:
     

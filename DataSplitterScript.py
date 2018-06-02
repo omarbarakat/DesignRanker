@@ -5,6 +5,7 @@ import os
 import re
 from PIL import Image, ImageChops
 from Utils.Properties import Properties
+import time
 
 # does not move the file
 def exportImage(F_IN, F_OUT, prop):
@@ -34,7 +35,7 @@ def exportImage(F_IN, F_OUT, prop):
 def initProp():
     prop=Properties()
     prop.trainSetRatio=0.7
-    prop.maxDatasetSize=100          # all files in train+test (-1 for all)
+    prop.maxDatasetSize=-1          # all files in train+test (-1 for all)
     prop.cropHeight=1200
     prop.cropWidth=1200
     prop.finalHeight=600
@@ -65,6 +66,7 @@ def main():
     
     numTrain=ceil(prop.trainSetRatio*dataSize)
     
+    start = time.time()
     for j in range(dataSize):
         fileName=re.sub("\."+extensions[featuredDirInd]+"$", '', fileNames[j])
         
@@ -79,6 +81,10 @@ def main():
             else:                   # moves the file
                 if os.path.isfile(origFPath):
                     os.rename(origFPath, distFPath)
+                    
+        if j%100==0:
+            print("processed "+str(j)+" images")
+            print(str((time.time()-start)/60.0)+" minutes have passed")
     
     prop.writeToFile(rootDir+'prop.pkl')
     

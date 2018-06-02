@@ -5,12 +5,13 @@ import wikipedia
 import pickle
 import os.path
 import signal
-import sys
+from Utils.Constants import Constants
 
-OUT_DIR_IMG='/media/omar/Data/Miscellaneous/web analysis/images/'
-OUT_DIR_WIKI='/media/omar/Data/Miscellaneous/web analysis/wikis/'
-OUT_DIR_HTML='/media/omar/Data/Miscellaneous/web analysis/htmls/'
-wikipedia.set_lang("fr")
+const=Constants()
+OUT_DIR_IMG  = const.rootDir+const.imagesDir
+OUT_DIR_WIKI = const.rootDir+const.wikiDir
+OUT_DIR_HTML = const.rootDir+const.htmlDir
+wikipedia.set_lang("en")
 
 file = open('top-1m.csv', 'r')
 reader = csv.reader(file)

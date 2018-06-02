@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-from Utils.DataLoader import *
+from Utils.DataLoader import DataLoader
 import matplotlib.pyplot as plt
+from Utils.Constants import Constants
 
 def main():
-    rootDir='/media/omar/Data/Miscellaneous/web analysis/'
-    trainDir='images/train/'
-    testDir='images/test/'
-    propFileName='prop.pkl'
+    const=Constants()
     
-    loader=DataLoader(rootDir+trainDir, rootDir+propFileName)
+    loader=DataLoader(const.rootDir+const.trainDir, const.rootDir+const.propFileName)
     (widths, heights) = loader.getDims()    # height=2000, width 15000
     
     plt.hist(widths, normed=True, bins=50)

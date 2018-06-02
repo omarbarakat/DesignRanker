@@ -1,8 +1,8 @@
-from CNNClassifier import *
-from Utils.DataLoader import *
-import numpy as np
-import sys
+from CNNClassifier import CNNClassifier
+from Utils.DataLoader import DataLoader
 import resource
+from Utils.Constants import Constants
+from Utils.Properties import Properties
 
 def memory_limit():
     soft, hard = resource.getrlimit(resource.RLIMIT_AS)
@@ -19,20 +19,17 @@ def get_memory():
 
 
 def main():
-    rootDir='/media/omar/Data/Miscellaneous/web analysis/'
-    trainDir='images/train/'
-    testDir='images/test/'
-    propFileName='prop.pkl'
-    
-    trainLoader=DataLoader(rootDir+trainDir, rootDir+propFileName)
-    testLoader=DataLoader(rootDir+testDir, rootDir+propFileName)
+    const=Constants()
+
+    trainLoader=DataLoader(const.rootDir+const.trainDir, const.rootDir+const.propFileName)
+    testLoader=DataLoader(const.rootDir+const.testDir, const.rootDir+const.propFileName)
 #    (trainData, trainlbl)=trainLoader.getImgVecLbl()
 #    (testData, testlbl)=testLoader.getImgVecLbl()
 #    cnn.runModel(trainData, trainlbl, testData, testlbl)
     trainGen = trainLoader.getGenerator()
     testGen  = testLoader.getGenerator()
     
-    prop = Properties.readFromFile(rootDir+'prop.pkl')
+    prop = Properties.readFromFile(const.rootDir+'prop.pkl')
     cnn=CNNClassifier((3, prop.finalHeight, prop.finalWidth))
     cnn.runModel_gen(trainGen, testGen)
 

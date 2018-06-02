@@ -14,3 +14,12 @@ class Constants:
     wikiDir='wikis/'
     htmlDir='htmls/'
     propFileName='prop.pkl'
+    
+class GCloudConstants:
+    rootDir='/content/drive/More Work/Self projects/DesignRanker/'
+    imagesDir='images/'
+    trainDir='images/train/'
+    testDir='images/test/'
+    wikiDir='wikis/'
+    htmlDir='htmls/'
+    propFileName='prop.pkl'

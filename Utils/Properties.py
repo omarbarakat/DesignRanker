@@ -21,7 +21,7 @@ class Properties:
         with open(file, 'wb') as output:
             pickle.dump(self, output)
     
-    
+    @staticmethod
     def readFromFile(file):
 #        try:
         with open(file, 'rb') as pickle_file:
